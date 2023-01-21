@@ -17,7 +17,6 @@ export default function NavigationBar() {
 
             <Nav className="mr-auto">
                 <Nav.Link as={NavLink} to="/">Welcome</Nav.Link>
-                <Nav.Link as={NavLink} to="/hips">HiPS</Nav.Link>
                 <Nav.Link as={NavLink} to="/ucac4">UCAC4</Nav.Link>
                 <Nav.Link as={NavLink} to="/starchart">Starchart</Nav.Link>
             </Nav>

@@ -19,12 +19,10 @@ import StarChartPage from "../pages/starchart/StarChartPage";
 
 export default function Main() {
 
-    //FetchData()
     FetchUCAC4(false)
-    //FetchADEX()
 
     return (
-        <Router basename="aladin-testbed">
+        <Router basename="aladin-starcharts">
             <div>
                 <NavigationBar/>
 
@@ -35,12 +33,6 @@ export default function Main() {
                     <Route exact path="/exoplanets">
                         <ExoplanetsPage />
                     </Route>
-                    <Route exact path="/asteroids">
-                        <AsteroidsPage />
-                    </Route>
-                    <Route exact path="/hips">
-                        <HipsPage />
-                    </Route>
                     <Route exact path="/ucac4">
                         <UCAC4Page />
                     </Route>
@@ -50,7 +42,7 @@ export default function Main() {
                 </Switch>
             </div>
             <footer>
-                <small> (C) 2023 - Nico Vermaas - version 1.0.0 - 15 jan 2023 - 12:00</small>
+                <small> (C) 2023 - Nico Vermaas - version 1.0.0 - 21 jan 2023 - 16:00</small>
             </footer>
         </Router>
 

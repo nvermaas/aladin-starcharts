@@ -9,11 +9,8 @@ import {
 
 import NavigationBar from './NavigationBar';
 import WelcomePage from '../pages/WelcomePage';
-import AsteroidsPage from '../pages/asteroids/AsteroidsPage';
 import ExoplanetsPage from '../pages/exoplanets/ExoplanetsPage';
-import HipsPage from '../pages/hips/HipsPage';
 import UCAC4Page from '../pages/ucac4/UCAC4Page';
-import FetchData from '../services/FetchData';
 import FetchUCAC4 from '../services/FetchUCAC4';
 import StarChartPage from "../pages/starchart/StarChartPage";
 

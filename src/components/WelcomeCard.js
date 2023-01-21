@@ -9,7 +9,7 @@ export default function WelcomeCard(props) {
         <div className="App">
             <Card>
                 <Card.Body>
-                    <h2>Welcome to this ReactJS/<a href="https://aladin.u-strasbg.fr/aladin.gml#AladinLite">AladinLight</a> demo app.</h2>
+                    <h2>Starcharts!</h2>
                     <Table>
                         <img src={welcome_logo} />
 

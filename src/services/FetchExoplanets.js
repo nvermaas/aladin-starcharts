@@ -1,50 +1,21 @@
 import React, {useState, useEffect }  from 'react';
 import { useGlobalReducer } from '../contexts/GlobalContext';
 import {
-    SET_STATUS_ASTEROIDS,
-    SET_FETCHED_ASTEROIDS,
     SET_STATUS_EXOPLANETS,
     SET_FETCHED_EXOPLANETS,
     SET_FILTERED_EXOPLANETS
 } from '../contexts/GlobalStateReducer';
 
 
-export default function FetchData () {
+export default function FetchExoplanets () {
     // use global state
     const [ my_state , my_dispatch] = useGlobalReducer()
-
-/*
-    useEffect(() => {
-            fetchAsteroids()
-        }, []
-    );
-*/
 
     useEffect(() => {
             fetchExoplanets()
         }, []
     );
 
-    const fetchAsteroids = () => {
-        const url = "https://web-of-wyrd.nl/my_astrobase/asteroids-all/"
-        if (my_state.status_asteroids !== 'fetching')  {
-
-            my_dispatch({type: SET_STATUS_ASTEROIDS, status_asteroids: 'fetching'})
-
-            fetch(url)
-                .then(results => {
-                    return results.json();
-                })
-                .then(data => {
-                    my_dispatch({type: SET_FETCHED_ASTEROIDS, fetched_asteroids: data.results})
-                    my_dispatch({type: SET_STATUS_ASTEROIDS, status_asteroids: 'fetched'})
-                })
-                .catch(function () {
-                    my_dispatch({type: SET_STATUS_ASTEROIDS, status_asteroids: 'failed'})
-                    alert("fetch to " + url + " failed.");
-                })
-        }
-    }
 
     const fetchExoplanets = () => {
         // TODO: add progress bar to fetch

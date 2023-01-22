@@ -30,7 +30,7 @@ export default function LeftPanel(props) {
                 <Card.Body align={"left"}>
 
                     <table>
-                        <Row><Col sm={5} md={5} lg={5}>Backend:</Col><Col sm={7} md={7} lg={7}> {my_state.ucac4_backend_url[0]}</Col></Row>
+                        <Row><Col sm={5} md={5} lg={5}>Backend:</Col><Col sm={7} md={7} lg={7}> {my_state.ucac4_backend.url}</Col></Row>
                         <Row><Col sm={5} md={5} lg={5}>Status :</Col><Col sm={7} md={7} lg={7}>  {my_state.status_ucac4}</Col></Row>
                         <Row><Col sm={5} md={5} lg={5}>Stars:</Col><Col sm={7} md={7} lg={7}>  {my_state.number_of_stars}</Col></Row>
                         <Row></Row>

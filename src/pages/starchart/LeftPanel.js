@@ -6,6 +6,7 @@ import { toHMSLabel, toFOVLabel } from '../../utils/coordinates'
 import MagnitudeBox from './MagnitudeBox'
 import DataLimitBox from './DataLimitBox'
 import RefreshButton from "./RefreshButton";
+import ResetButton from "./ResetButton";
 import SelectBackendButton from "./SelectBackendButton"
 import SurveyFilterButton from "./SurveyFilterButton";
 
@@ -31,7 +32,7 @@ export default function LeftPanel(props) {
                 <Card.Body align={"left"}>
 
                     <table>
-                        <Row><Col sm={4} md={4} lg={4}>Backend:</Col><Col sm={8} md={8} lg={8}> {my_state.ucac4_backend_url[0]}</Col></Row>
+                        <Row><Col sm={4} md={4} lg={4}>Backend:</Col><Col sm={8} md={8} lg={8}> {my_state.ucac4_backend.name}</Col></Row>
                         <Row><Col sm={4} md={4} lg={4}>Status :</Col><Col sm={8} md={8} lg={8}>  {my_state.status_ucac4}</Col></Row>
                         <Row><Col sm={4} md={4} lg={4}>DPS:</Col><Col sm={8} md={8} lg={8}>  {my_state.number_of_stars}</Col></Row>
                         <Row><Col sm={4} md={4} lg={4}>Position:</Col><Col sm={8} md={8} lg={8}>  {renderRADec(my_state.aladin_ra, my_state.aladin_dec)}</Col></Row>
@@ -46,6 +47,8 @@ export default function LeftPanel(props) {
                         <Row><Col><SurveyFilterButton /></Col></Row>
                         <Row><Col>Magnitude Limit: <MagnitudeBox/></Col></Row>
                         <Row><Col>Max Records    : <DataLimitBox/></Col></Row>
+                        <Row><Col><ResetButton /></Col></Row>
+                        <Row><Col><RefreshButton /></Col></Row>
                     </table>
                 </Card.Body>
             </Card>

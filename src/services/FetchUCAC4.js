@@ -32,7 +32,7 @@ export default function FetchUCAC4(skipAbortController) {
         let dec_min = Number(my_state.aladin_dec) - d
         let dec_max = Number(my_state.aladin_dec) + d
 
-        let url = my_state.ucac4_backend_url[1] + "/stars_rectangle/?ra_min=" + ra_min.toString() + "&ra_max=" + ra_max.toString()
+        let url = my_state.ucac4_backend.url + "/stars_rectangle/?ra_min=" + ra_min.toString() + "&ra_max=" + ra_max.toString()
         url += "&dec_min=" + dec_min.toString() + "&dec_max=" + dec_max.toString()
         url += "&j_mag=" + (my_state.magnitude_limit*1000).toString()
         url += "&limit=" + my_state.data_limit.toString()
@@ -63,8 +63,9 @@ export default function FetchUCAC4(skipAbortController) {
                 my_dispatch({type: SET_NUMBER_OF_STARS, number_of_stars: 0})
                 my_dispatch({type: SET_STATUS_UCAC4, status_ucac4: 'fetch aborted'})
             } else {
+                console.log(error)
                 my_dispatch({type: SET_NUMBER_OF_STARS, number_of_stars: 0})
-                my_dispatch({type: SET_STATUS_UCAC4, status_ucac4: 'failed'})
+                my_dispatch({type: SET_STATUS_UCAC4, status_ucac4: error})
             }
         }
     }

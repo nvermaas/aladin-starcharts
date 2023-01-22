@@ -9,10 +9,11 @@ import {
 
 import NavigationBar from './NavigationBar';
 import WelcomePage from '../pages/WelcomePage';
-import ExoplanetsPage from '../pages/exoplanets/ExoplanetsPage';
 import UCAC4Page from '../pages/ucac4/UCAC4Page';
 import FetchUCAC4 from '../services/FetchUCAC4';
 import StarChartPage from "../pages/starchart/StarChartPage";
+import {initialState} from "../contexts/GlobalStateReducer";
+import {config} from "../contexts/StaticConfig";
 
 export default function Main() {
 
@@ -27,9 +28,6 @@ export default function Main() {
                     <Route exact path="/">
                         <WelcomePage />
                     </Route>
-                    <Route exact path="/exoplanets">
-                        <ExoplanetsPage />
-                    </Route>
                     <Route exact path="/ucac4">
                         <UCAC4Page />
                     </Route>
@@ -39,7 +37,7 @@ export default function Main() {
                 </Switch>
             </div>
             <footer>
-                <small> (C) 2023 - Nico Vermaas - version 1.0.0 - 21 jan 2023 - 16:00</small>
+                <small> (C) 2023 - Nico Vermaas - version 1.0.0 - 22 jan 2023 - 14:00</small>
             </footer>
         </Router>
 

@@ -21,7 +21,7 @@ export default function FetchUCAC4(skipAbortController) {
                     controller.abort();
                 };
             }
-        }, [my_state.magnitude_limit, my_state.reload_ucac4]
+        }, [my_state.reload_ucac4]
     );
 
     // translate the state to different url parameters, depending on the type of backend (fastapi, drf)

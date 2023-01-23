@@ -74,6 +74,7 @@ const AladinPanel = (props) => {
                     }
                 });
             }
+
             instance.setImageSurvey(my_state.selected_survey)
         }
     }, [my_state.selected_survey]);

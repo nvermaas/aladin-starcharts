@@ -9,6 +9,8 @@ import RefreshButton from "./RefreshButton";
 import ResetButton from "./ResetButton";
 import SelectBackendButton from "./SelectBackendButton"
 import SurveyFilterButton from "./SurveyFilterButton";
+import RABox from "./RABox";
+import DECBox from "./DECBox";
 
 export default function LeftPanel(props) {
     const [ my_state , my_dispatch] = useGlobalReducer()
@@ -18,7 +20,7 @@ export default function LeftPanel(props) {
             let ra_label = Number(ra).toFixed(2)
             let dec_label = Number(dec).toFixed(2)
             let radec_label = ra_label + ', ' + dec_label
-            return <div>{toHMSLabel(radec_label)} </div>
+            return <div>{(radec_label)} </div>
         } catch (e) {
             alert(e)
             return <div>n/a</div>
@@ -32,7 +34,6 @@ export default function LeftPanel(props) {
                 <Card.Body align={"left"}>
 
                     <table>
-                        <Row><Col sm={4} md={4} lg={4}>Backend:</Col><Col sm={8} md={8} lg={8}> {my_state.ucac4_backend.name}</Col></Row>
                         <Row><Col sm={4} md={4} lg={4}>Status :</Col><Col sm={8} md={8} lg={8}>  {my_state.status_ucac4}</Col></Row>
                         <Row><Col sm={4} md={4} lg={4}>DPS:</Col><Col sm={8} md={8} lg={8}>  {my_state.number_of_stars}</Col></Row>
                         <Row><Col sm={4} md={4} lg={4}>Position:</Col><Col sm={8} md={8} lg={8}>  {renderRADec(my_state.aladin_ra, my_state.aladin_dec)}</Col></Row>
@@ -47,6 +48,7 @@ export default function LeftPanel(props) {
                         <Row><Col><SurveyFilterButton /></Col></Row>
                         <Row><Col>Magnitude Limit: <MagnitudeBox/></Col></Row>
                         <Row><Col>Max Records    : <DataLimitBox/></Col></Row>
+                        <Row><Col>RA : <RABox/></Col><Col>dec : <DECBox/></Col></Row>
                         <Row><Col><ResetButton /></Col></Row>
                         <Row><Col><RefreshButton /></Col></Row>
                     </table>

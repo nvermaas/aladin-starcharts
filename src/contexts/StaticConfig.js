@@ -1,17 +1,13 @@
 
 export const config = {
     "defaults" : {
-        "ra": "84",
-        "dec" : "10",
-        "fov" : "2",
-        "selected_survey"  : 'DSS colored',
+        "ra": "83.9",
+        "dec" : "9.7",
+        "fov" : "1",
+        "selected_survey"  : 'P/XMM/PN/color',
     },
 
     "surveys": [
-        {
-            "name": "None",
-            "title": "None"
-        },
         {
             "name": "P/DSS2/color",
             "title": "DSS Colored (optical)"

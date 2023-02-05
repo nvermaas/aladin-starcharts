@@ -128,8 +128,12 @@ const AladinPanel = (props) => {
 
 
     const addCircleToOverlay = (my_overlay, object, size, color) => {
+        // ring algorithm
+        // 2 deg = 3
+        // 1 deg = 10
+
         // create n circles on equal distance to simulate filling
-        let n = 10
+        let n = my_state.nr_of_rings
         let d = size/n
         let s = size
         for (let i = 0; i < n; i++) {
@@ -138,9 +142,9 @@ const AladinPanel = (props) => {
             s = s - d
             //alert(s)
         }
-        my_overlay.add(window.A.circle(object.ra, object.dec,size, {color: color, lineWidth: 2}));
-        my_overlay.add(window.A.circle(object.ra, object.dec,size/2, {color: color, lineWidth: 2}));
-        my_overlay.add(window.A.circle(object.ra, object.dec,size/3, {color: color, lineWidth: 2}));
+        //my_overlay.add(window.A.circle(object.ra, object.dec,size, {color: color, lineWidth: 2}));
+        //my_overlay.add(window.A.circle(object.ra, object.dec,size/2, {color: color, lineWidth: 2}));
+        //my_overlay.add(window.A.circle(object.ra, object.dec,size/3, {color: color, lineWidth: 2}));
     }
 
     const addBoxesToOverlay = (my_overlay, object, size, color) => {

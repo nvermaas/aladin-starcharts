@@ -11,6 +11,7 @@ import SelectBackendButton from "./SelectBackendButton"
 import SurveyFilterButton from "./SurveyFilterButton";
 import RABox from "./RABox";
 import DECBox from "./DECBox";
+import RingsBox from "./RingsBox";
 
 export default function LeftPanel(props) {
     const [ my_state , my_dispatch] = useGlobalReducer()
@@ -34,9 +35,8 @@ export default function LeftPanel(props) {
                 <Card.Body align={"left"}>
 
                     <table>
-                        <Row><Col sm={4} md={4} lg={4}>Status :</Col><Col sm={8} md={8} lg={8}>  {my_state.status_ucac4}</Col></Row>
-                        <Row><Col sm={4} md={4} lg={4}>DPS:</Col><Col sm={8} md={8} lg={8}>  {my_state.number_of_stars}</Col></Row>
-                        <Row><Col sm={4} md={4} lg={4}>Position:</Col><Col sm={8} md={8} lg={8}>  {renderRADec(my_state.aladin_ra, my_state.aladin_dec)}</Col></Row>
+                        <Row><Col sm={4} md={4} lg={4}>Status :</Col><Col sm={8} md={8} lg={8}> {my_state.number_of_stars}  {my_state.status_ucac4}</Col></Row>
+                        <Row><Col sm={4} md={4} lg={4}>Position:</Col><Col sm={8} md={8} lg={8}>  {renderRADec(my_state.aladin_ra, my_state.aladin_dec)} </Col></Row>
                         <Row><Col sm={4} md={4} lg={4}>FoV:</Col><Col sm={8} md={8} lg={8}>  {Math.round(my_state.aladin_fov*100)/100} deg</Col></Row>
 
                         <Row></Row>
@@ -46,9 +46,15 @@ export default function LeftPanel(props) {
                         <Row><Col><SelectBackendButton /></Col></Row>
                         <Row><Col>Background Survey (HiPS) :</Col></Row>
                         <Row><Col><SurveyFilterButton /></Col></Row>
-                        <Row><Col>Magnitude Limit: <MagnitudeBox/></Col></Row>
-                        <Row><Col>Max Records    : <DataLimitBox/></Col></Row>
-                        <Row><Col>RA : <RABox/></Col><Col>dec : <DECBox/></Col></Row>
+                        <Row>
+                            <Col sm={4} md={4} lg={4}>Mag Limit: <MagnitudeBox/></Col>
+                            <Col sm={4} md={4} lg={4}>Max stars : <DataLimitBox/></Col>
+                            <Col sm={4} md={4} lg={4}>Rings : <RingsBox/></Col>
+                        </Row>
+                        <Row>
+                            <Col sm={4} md={4} lg={4}>RA : <RABox/></Col>
+                            <Col sm={4} md={4} lg={4}>dec : <DECBox/></Col>
+                        </Row>
                         <Row><Col><ResetButton /></Col></Row>
                         <Row><Col><RefreshButton /></Col></Row>
                     </table>

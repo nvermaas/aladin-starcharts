@@ -16,11 +16,11 @@ export const ALADIN_FOV = 'ALADIN_FOV'
 export const ALADIN_SET_MOUSE = 'ALADIN_SET_MOUSE'
 export const ALADIN_RELOAD = 'ALADIN_RELOAD'
 
-// HIPS page
 export const SET_SELECTED_SURVEY = 'SET_SELECTED_SURVEY'
 export const SET_SELECTED_OBJECT = 'SET_SELECTED_OBJECT'
 export const SET_MAGNITUDE_LIMIT = 'SET_MAGNITUDE_LIMIT'
 export const SET_DATA_LIMIT = 'SET_DATA_LIMIT'
+export const SET_NR_OF_RINGS = 'SET_NR_OF_RINGS'
 
 export const initialState = {
 
@@ -37,6 +37,7 @@ export const initialState = {
         selected_survey  : config.defaults.selected_survey,
         magnitude_limit  : 15,
         data_limit: 10000,
+        nr_of_rings : 10,
         status_ucuc4 : "unfetched",
 }
 
@@ -132,6 +133,13 @@ export const reducer = (state, action) => {
 
                 ...state,
                 data_limit: action.data_limit
+            };
+
+        case SET_NR_OF_RINGS:
+            return {
+
+                ...state,
+                nr_of_rings: action.nr_of_rings
             };
 
         default:

@@ -5,6 +5,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
+
 } from "react-router-dom";
 
 import NavigationBar from './NavigationBar';
@@ -12,10 +13,12 @@ import WelcomePage from '../pages/WelcomePage';
 import UCAC4Page from '../pages/ucac4/UCAC4Page';
 import FetchUCAC4 from '../services/FetchUCAC4';
 import StarChartPage from "../pages/starchart/StarChartPage";
-import {initialState} from "../contexts/GlobalStateReducer";
-import {config} from "../contexts/StaticConfig";
+import React from "react";
+
+import {useGlobalReducer} from "../contexts/GlobalContext";
 
 export default function Main() {
+    const queryParameters = new URLSearchParams(window.location.search)
 
     FetchUCAC4(false)
 
@@ -23,7 +26,6 @@ export default function Main() {
         <Router basename="aladin-starcharts">
             <div>
                 <NavigationBar/>
-
                 <Switch>
                     <Route exact path="/">
                         <WelcomePage />
@@ -32,12 +34,12 @@ export default function Main() {
                         <UCAC4Page />
                     </Route>
                     <Route exact path="/starchart">
-                        <StarChartPage />
+                        <StarChartPage params = {queryParameters}/>
                     </Route>
                 </Switch>
             </div>
             <footer>
-                <small> (C) 2023 - Nico Vermaas - version 1.0.0 - 5 feb 2023 - 10:00</small>
+                <small> (C) 2023 - Nico Vermaas - version 1.0.0 - 11 feb 2023 - 19:00</small>
             </footer>
         </Router>
 

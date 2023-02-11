@@ -22,6 +22,8 @@ export const SET_MAGNITUDE_LIMIT = 'SET_MAGNITUDE_LIMIT'
 export const SET_DATA_LIMIT = 'SET_DATA_LIMIT'
 export const SET_NR_OF_RINGS = 'SET_NR_OF_RINGS'
 
+export const URL_PARAMS_CHECKED = 'URL_PARAMS_CHECKED'
+
 export const initialState = {
 
         status_ucac4       : "unfetched",
@@ -39,6 +41,7 @@ export const initialState = {
         data_limit: 10000,
         nr_of_rings : 10,
         status_ucuc4 : "unfetched",
+        url_params_checked : false,
 }
 
 export const reducer = (state, action) => {
@@ -140,6 +143,12 @@ export const reducer = (state, action) => {
 
                 ...state,
                 nr_of_rings: action.nr_of_rings
+            };
+
+        case URL_PARAMS_CHECKED:
+            return {
+                ...state,
+                url_params_checked: action.url_params_checked
             };
 
         default:

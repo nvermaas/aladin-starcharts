@@ -22,7 +22,6 @@ export default function StarChartPage(props) {
         let dec = props.params.get("dec")
         let fov = props.params.get("fov")
         if (ra) {
-            alert(ra)
             my_dispatch({type: ALADIN_RA, aladin_ra: ra})
         }
         if (dec) {

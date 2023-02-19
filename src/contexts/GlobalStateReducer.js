@@ -3,12 +3,17 @@
 import {config} from "./StaticConfig";
 
 // possible actions
-
+export const SET_UCAC4_ENABLED = 'SET_UCAC4_ENABLED'
 export const SET_STATUS_UCAC4 = 'SET_STATUS_UCAC4'
 export const SET_FETCHED_UCAC4 = 'SET_FETCHED_UCAC4'
 export const SET_NUMBER_OF_STARS = 'SET_NUMBER_OF_STARS'
 export const SET_UCAC4_BACKEND = 'SET_UCAC4_BACKEND'
 export const RELOAD_UCAC4 = 'RELOAD_UCAC4'
+
+export const SET_STATUS_HYGDATA = 'SET_STATUS_HYGDATA'
+export const SET_FETCHED_HYGDATA = 'SET_FETCHED_HYGDATA'
+export const SET_NUMBER_OF_HYGDATA = 'SET_NUMBER_OF_HYGDATA'
+export const SET_HYGDATA_ENABLED = 'SET_HYGDATA_ENABLED'
 
 export const ALADIN_RA = 'ALADIN_RA'
 export const ALADIN_DEC = 'ALADIN_DEC'
@@ -29,7 +34,13 @@ export const initialState = {
         status_ucac4       : "unfetched",
         fetched_ucac4      : undefined,
         number_of_stars    : 0,
+        ucac4_enabled      : true,
         ucac4_backend       : config.backends[0],
+
+        status_hygdata       : "unfetched",
+        fetched_hygdata      : undefined,
+        number_of_hygdata    : 0,
+        hygdata_enabled      : true,
 
         aladin_ra   : config.defaults.ra,
         aladin_dec  : config.defaults.dec,
@@ -49,6 +60,12 @@ export const reducer = (state, action) => {
     console.log('action: '+action.type)
 
     switch (action.type) {
+
+        case SET_UCAC4_ENABLED:
+            return {
+                ...state,
+                ucac4_enabled: action.ucac4_enabled
+            };
 
         case SET_STATUS_UCAC4:
             return {
@@ -80,6 +97,29 @@ export const reducer = (state, action) => {
                 number_of_stars: action.number_of_stars
             };
 
+        case SET_HYGDATA_ENABLED:
+            return {
+                ...state,
+                hygdata_enabled: action.hygdata_enabled
+            };
+
+        case SET_STATUS_HYGDATA:
+            return {
+                ...state,
+                status_hygdata: action.status_hygdata
+            };
+
+        case SET_FETCHED_HYGDATA:
+            return {
+                ...state,
+                fetched_hygdata: action.fetched_hygdata
+            };
+
+        case SET_NUMBER_OF_HYGDATA:
+            return {
+                ...state,
+                number_of_hygdata: action.number_of_hygdata
+            };
 
         case ALADIN_RA:
             return {

@@ -12,6 +12,7 @@ import NavigationBar from './NavigationBar';
 import WelcomePage from '../pages/WelcomePage';
 import UCAC4Page from '../pages/ucac4/UCAC4Page';
 import FetchUCAC4 from '../services/FetchUCAC4';
+import FetchHygData from "../services/FetchHygData";
 import StarChartPage from "../pages/starchart/StarChartPage";
 import React from "react";
 
@@ -21,6 +22,7 @@ export default function Main() {
     const queryParameters = new URLSearchParams(window.location.search)
 
     FetchUCAC4(false)
+    FetchHygData(false)
 
     return (
         <Router basename="aladin-starcharts">
@@ -39,7 +41,7 @@ export default function Main() {
                 </Switch>
             </div>
             <footer>
-                <small> (C) 2023 - Nico Vermaas - version 1.0.0 - 18 feb 2023 - 8:00</small>
+                <small> (C) 2023 - Nico Vermaas - version 1.0.0 - 18 feb 2023 - 16:00</small>
             </footer>
         </Router>
 

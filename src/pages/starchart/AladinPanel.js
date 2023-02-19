@@ -90,7 +90,7 @@ const AladinPanel = (props) => {
             instance.gotoRaDec(my_state.aladin_ra, my_state.aladin_dec)
 
             // create the catalog layer
-            createLayers(instance, props.data)
+            createLayers(instance, props.data, props.hygdata)
 
             // callback when the field of view in aladin is changed
             // note: the reason for using 'zoomChanged' instead of a OnMouseWheel event on the <div> for this
@@ -137,14 +137,10 @@ const AladinPanel = (props) => {
         let d = size/n
         let s = size
         for (let i = 0; i < n; i++) {
-
             my_overlay.add(window.A.circle(object.ra, object.dec,s, {color: color, lineWidth: 2}));
             s = s - d
             //alert(s)
         }
-        //my_overlay.add(window.A.circle(object.ra, object.dec,size, {color: color, lineWidth: 2}));
-        //my_overlay.add(window.A.circle(object.ra, object.dec,size/2, {color: color, lineWidth: 2}));
-        //my_overlay.add(window.A.circle(object.ra, object.dec,size/3, {color: color, lineWidth: 2}));
     }
 
     const addBoxesToOverlay = (my_overlay, object, size, color) => {
@@ -153,15 +149,15 @@ const AladinPanel = (props) => {
     }
 
     // create the catalog layer
-    const createLayers = (aladin, data) => {
+    const createLayers = (aladin, data, hygdata) => {
 
         aladin.removeLayers()
 
         let overlay_stars = window.A.graphicOverlay({name: 'stars',color: 'white', lineWidth: 1});
         aladin.addOverlay(overlay_stars);
 
-        let overlay_boxes = window.A.graphicOverlay({name: 'boxes',color: 'white', lineWidth: 1});
-        //aladin.addOverlay(overlay_boxes);
+        let overlay_boxes = window.A.graphicOverlay({name: 'boxes',color: 'red', lineWidth: 3});
+        aladin.addOverlay(overlay_boxes);
 
         let my_catalog = window.A.catalog({
             name: 'UCAC4',
@@ -171,6 +167,7 @@ const AladinPanel = (props) => {
             labelColumn: 'j_mag',
             displayLabel: false,
             onClick: 'showPopup'});
+
         //onClick: 'showTable'});
 
         // loop through all the objects and add them to the appropriate layer based a property
@@ -190,14 +187,36 @@ const AladinPanel = (props) => {
 
             aladin.addCatalog(my_catalog);
         }
+
+        if (my_state.hygdata_enabled) {
+            let my_label_catalog = window.A.catalog({
+                name: 'label',
+                shape: 'square',
+                color: 'red',
+                sourceSize: 30,
+                labelColumn: 'id',
+                displayLabel: false,
+                onClick: 'showPopup'
+            });
+
+            if (hygdata) {
+                hygdata.forEach(function (object) {
+                    // draw a clickable icon for each observation
+
+                    addBoxesToOverlay(overlay_boxes, object, 0.03, "red")
+                })
+
+                aladin.addCatalog(my_label_catalog);
+            }
+        }
     }
 
     // get the bounding box in world coordinates from an observation
     const getBox = (object,size) => {
-        let point1 = [object.ra-(0.5 * size),object.dec-(0.5 * size)]
-        let point2 = [object.ra+(0.5 * size),object.dec-(0.5 * size)]
-        let point3 = [object.ra+(0.5 * size),object.dec+(0.5 * size)]
-        let point4 = [object.ra-(0.5 * size),object.dec+(0.5 * size)]
+        let point1 = [object.RightAscension-(0.5 * size),object.Declination-(0.5 * size)]
+        let point2 = [object.RightAscension+(0.5 * size),object.Declination-(0.5 * size)]
+        let point3 = [object.RightAscension+(0.5 * size),object.Declination+(0.5 * size)]
+        let point4 = [object.RightAscension-(0.5 * size),object.Declination+(0.5 * size)]
         let box = [point1,point2,point3,point4,point1]
         return box
     }

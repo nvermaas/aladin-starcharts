@@ -45,7 +45,10 @@ export default function StarChartPage(props) {
                     </Col>
                     <Col sm={9} md={9} lg={9}>
                         <Card>
-                            <AladinPanel survey={my_state.selected_survey} data={my_state.fetched_ucac4}/>
+                            <AladinPanel
+                                survey={my_state.selected_survey}
+                                data={my_state.fetched_ucac4}
+                                hygdata={my_state.fetched_hygdata}/>
                         </Card>
                     </Col>
                 </Row>

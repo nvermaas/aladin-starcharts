@@ -4,7 +4,8 @@ export const config = {
         "ra": "250.42",
         "dec" : "36.45",
         "fov" : "1",
-        "selected_survey"  : 'P/XMM/PN/color',
+        "selected_survey"  : 'P/DSS2/color',
+        "no_survey"  : 'P/XMM/PN/color',
     },
 
     "surveys": [
@@ -17,10 +18,6 @@ export const config = {
             "title": "allWISE (infrared)"
         },
         {
-            "name": "P/XMM/PN/color",
-            "title": "XMM PN colored"
-        },
-        {
             "name": "P/IRIS/color",
             "title": "IRIS color"
         },
@@ -31,6 +28,10 @@ export const config = {
         {
             "name": "P/AKARI/FIS/Color",
             "title": "AKARI FIS Color"
+        },
+        {
+            "name": "P/XMM/PN/color",
+            "title": "XMM PN colored"
         },
     ],
     "color_maps": ["native", "grayscale", "cubehelix", "eosb", "rainbow"],

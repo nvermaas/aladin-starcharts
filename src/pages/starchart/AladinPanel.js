@@ -35,7 +35,7 @@ const AladinPanel = (props) => {
 
         if (ref.current) {
             const el = ref.current;
-            setInstance(window.A.aladin(`#${el.id}`,{ survey: my_state.selected_survey, fov: my_state.fov }));
+            setInstance(window.A.aladin(`#${el.id}`,{ survey: my_state.no_survey, fov: my_state.fov }));
             console.log("AladinPanel mounted");
 
             // trigger a fetch of the data
@@ -75,9 +75,13 @@ const AladinPanel = (props) => {
                 });
             }
 
-            instance.setImageSurvey(my_state.selected_survey)
+            if (my_state.survey_enabled) {
+                instance.setImageSurvey(my_state.selected_survey)
+            } else {
+                instance.setImageSurvey(my_state.no_survey)
+            }
         }
-    }, [my_state.selected_survey]);
+    }, [my_state.selected_survey, my_state.survey_enabled]);
 
 
     // render on 'aladin_reload'

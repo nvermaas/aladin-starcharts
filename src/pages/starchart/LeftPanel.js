@@ -47,8 +47,6 @@ export default function LeftPanel(props) {
                         <hr></hr>
                         <Row><Col>Choose Backend    :</Col></Row>
                         <Row><Col><SelectBackendButton /></Col></Row>
-                        <Row><Col>Background Survey (HiPS) :</Col></Row>
-                        <Row><Col><SurveyFilterButton /></Col></Row>
                         <Row><Col><InlineCheckboxesLayers /></Col></Row>
 
                         <Row>

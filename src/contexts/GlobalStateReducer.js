@@ -51,6 +51,8 @@ export const initialState = {
         aladin_mouse: "idle",
 
         selected_survey  : config.defaults.selected_survey,
+        no_survey  : config.defaults.no_survey,
+
         survey_enabled : false,
         magnitude_limit  : 15,
         data_limit: 10000,
@@ -173,7 +175,7 @@ export const reducer = (state, action) => {
         case SET_SURVEY_ENABLED:
             return {
                 ...state,
-                hygdata_enabled: action.hygdata_enabled
+                survey_enabled: action.survey_enabled
             };
 
         case SET_SELECTED_OBJECT:

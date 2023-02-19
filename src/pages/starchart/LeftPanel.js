@@ -40,6 +40,7 @@ export default function LeftPanel(props) {
                     <table>
                         <Row><Col sm={4} md={4} lg={4}>UCAC4 :</Col><Col sm={8} md={8} lg={8}> {my_state.number_of_stars}  {my_state.status_ucac4}</Col></Row>
                         <Row><Col sm={4} md={4} lg={4}>HygData :</Col><Col sm={8} md={8} lg={8}> {my_state.number_of_hygdata}  {my_state.status_hygdata}</Col></Row>
+                        <Row><Col sm={4} md={4} lg={4}>Object :</Col><Col sm={8} md={8} lg={8}> {my_state.selected_object}</Col></Row>
 
                         <Row></Row>
 

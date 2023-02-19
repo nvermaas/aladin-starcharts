@@ -56,6 +56,8 @@ export const initialState = {
         data_limit: 10000,
         nr_of_rings : 10,
         url_params_checked : false,
+
+        selected_object : undefined
 }
 
 export const reducer = (state, action) => {

@@ -115,9 +115,10 @@ const AladinPanel = (props) => {
             instance.on('objectHovered', function (object) {
 
                 if (object) {
+
                     try {
                         // select the object under the mouse cursor, and store it in global state
-                        my_dispatch({type: SET_SELECTED_OBJECT, selected_object: object.data.id})
+                        my_dispatch({type: SET_SELECTED_OBJECT, selected_object: object.data.HipparcosID})
                     } catch (e) {
                     }
                 }
@@ -157,34 +158,17 @@ const AladinPanel = (props) => {
             let ucac4_overlay = window.A.graphicOverlay({name: 'stars',color: 'white', lineWidth: 1});
             aladin.addOverlay(ucac4_overlay);
 
-            let ucac4_catalog = window.A.catalog({
-                name: 'UCAC4',
-                shape: 'circle',
-                color: 'yellow',
-                sourceSize: 20,
-                labelColumn: 'j_mag',
-                displayLabel: false,
-                onClick: 'showPopup'
-            });
-
-            //onClick: 'showTable'});
-
             // loop through all the objects and add them to the appropriate layer based a property
             if (data) {
                 data.forEach(function (object) {
-                    // draw a clickable icon for each observation
-                    //addToCatalog(my_catalog, object)
-
                     // calculate a reasonable size based on magnitude
                     let m = object.j_mag
                     let base = Math.pow(((15000 - m) / 1000), 2)
                     let s = base / 20000
 
                     addCircleToOverlay(ucac4_overlay, object, s, 'white')
-                    //addBoxesToOverlay(overlay_boxes, object, 0.01 "white")
                 })
 
-                aladin.addCatalog(ucac4_catalog);
             }
         }
 
@@ -192,24 +176,29 @@ const AladinPanel = (props) => {
             let hyg_boxes_overlay = window.A.graphicOverlay({name: 'boxes',color: 'red', lineWidth: 3});
             aladin.addOverlay(hyg_boxes_overlay);
 
-            let my_label_catalog = window.A.catalog({
-                name: 'label',
+
+            let hyg_catalog = window.A.catalog({
+                name: 'hyg_catalog',
                 shape: 'square',
                 color: 'red',
-                sourceSize: 30,
-                labelColumn: 'id',
-                displayLabel: false,
+                sourceSize: 20,
+                labelColumn: 'HipparcosID',
+                displayLabel: my_state.labels_enabled,
                 onClick: 'showPopup'
             });
 
             if (hygdata) {
                 hygdata.forEach(function (object) {
                     // draw a clickable icon for each observation
+                    // add to catalog to get a clickable object.
+                    // this means that every object is the same size and shape also.
+                    // Which is okay for HYG, but not for UCAC4, because those stars are scaled by magnitude
+                    addToCatalog(hyg_catalog, object)
 
-                    addBoxesToOverlay(hyg_boxes_overlay, object, 0.03, "red")
+                    //addBoxesToOverlay(hyg_boxes_overlay, object, 0.03, "red")
                 })
 
-                aladin.addCatalog(my_label_catalog);
+                aladin.addCatalog(hyg_catalog);
             }
         }
     }
@@ -225,16 +214,19 @@ const AladinPanel = (props) => {
     }
 
     const addToCatalog = (my_catalog, object) => {
-        let source = [window.A.source(
-            object.ra,
-            object.dec,
-            {
-                mpos1: object.mpos1,
-                j_mag : Math.round(object.j_mag/100)/10,
-            },
-        )]
 
-        my_catalog.addSources(source);
+        if (my_catalog.name === 'hyg_catalog') {
+            let source = [window.A.source(
+                object.RightAscension,
+                object.Declination,
+                {
+                    HipparcosID: object.HipparcosID,
+                    Magnitude: object.Magnitude,
+                },
+            )]
+            my_catalog.addSources(source);
+        }
+
     }
 
 

@@ -1,8 +1,8 @@
 
 export const config = {
     "defaults" : {
-        "ra": "83.9",
-        "dec" : "9.7",
+        "ra": "250.42",
+        "dec" : "36.45",
         "fov" : "1",
         "selected_survey"  : 'P/XMM/PN/color',
     },

@@ -14,6 +14,7 @@ export const SET_STATUS_HYGDATA = 'SET_STATUS_HYGDATA'
 export const SET_FETCHED_HYGDATA = 'SET_FETCHED_HYGDATA'
 export const SET_NUMBER_OF_HYGDATA = 'SET_NUMBER_OF_HYGDATA'
 export const SET_HYGDATA_ENABLED = 'SET_HYGDATA_ENABLED'
+export const SET_LABELS_ENABLED = 'SET_LABELS_ENABLED'
 
 export const ALADIN_RA = 'ALADIN_RA'
 export const ALADIN_DEC = 'ALADIN_DEC'
@@ -22,6 +23,7 @@ export const ALADIN_SET_MOUSE = 'ALADIN_SET_MOUSE'
 export const ALADIN_RELOAD = 'ALADIN_RELOAD'
 
 export const SET_SELECTED_SURVEY = 'SET_SELECTED_SURVEY'
+export const SET_SURVEY_ENABLED = 'SET_SURVEY_ENABLED'
 export const SET_SELECTED_OBJECT = 'SET_SELECTED_OBJECT'
 export const SET_MAGNITUDE_LIMIT = 'SET_MAGNITUDE_LIMIT'
 export const SET_DATA_LIMIT = 'SET_DATA_LIMIT'
@@ -41,6 +43,7 @@ export const initialState = {
         fetched_hygdata      : undefined,
         number_of_hygdata    : 0,
         hygdata_enabled      : false,
+        labels_enabled      : false,
 
         aladin_ra   : config.defaults.ra,
         aladin_dec  : config.defaults.dec,
@@ -48,6 +51,7 @@ export const initialState = {
         aladin_mouse: "idle",
 
         selected_survey  : config.defaults.selected_survey,
+        survey_enabled : false,
         magnitude_limit  : 15,
         data_limit: 10000,
         nr_of_rings : 10,
@@ -100,6 +104,12 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 hygdata_enabled: action.hygdata_enabled
+            };
+
+        case SET_LABELS_ENABLED:
+            return {
+                ...state,
+                labels_enabled: action.labels_enabled
             };
 
         case SET_STATUS_HYGDATA:
@@ -156,6 +166,12 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 selected_survey: action.selected_survey
+            };
+
+        case SET_SURVEY_ENABLED:
+            return {
+                ...state,
+                hygdata_enabled: action.hygdata_enabled
             };
 
         case SET_SELECTED_OBJECT:

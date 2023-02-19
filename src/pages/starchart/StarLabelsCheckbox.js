@@ -4,7 +4,7 @@ import { useGlobalReducer } from '../../contexts/GlobalContext';
 
 import {SET_HYGDATA_ENABLED, ALADIN_RELOAD} from '../../contexts/GlobalStateReducer'
 
-export default function HygDataCheckbox(props) {
+export default function StarLabelsCheckbox(props) {
     const [ my_state , my_dispatch] = useGlobalReducer()
 
     const handleClick = (event) => {
@@ -15,13 +15,13 @@ export default function HygDataCheckbox(props) {
 
     return (
 
-            <Form.Check
-                inline
-                id="hygdata"
-                label="HYG"
-                checked = {my_state.hygdata_enabled}
-                onClick={handleClick}
-            />
+        <Form.Check
+            inline
+            id="starlabels"
+            label="Labels"
+            checked = {my_state.hygdata_enabled}
+            onClick={handleClick}
+        />
 
     );
 

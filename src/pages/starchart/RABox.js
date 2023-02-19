@@ -27,7 +27,7 @@ export default function RABox(props) {
             <FormControl
                 type="text"
                 //value= {my_state.magnitude_limit}
-                placeholder= {my_state.aladin_ra}
+                placeholder= {Number(my_state.aladin_ra).toFixed(2)}
                 className="mr-sm-1"
                 onKeyDown={handleKeyDown}>
             </FormControl>

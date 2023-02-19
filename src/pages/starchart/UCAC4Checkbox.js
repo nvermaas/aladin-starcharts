@@ -4,7 +4,6 @@ import { useGlobalReducer } from '../../contexts/GlobalContext';
 
 import {SET_HYGDATA_ENABLED, ALADIN_RELOAD, SET_UCAC4_ENABLED, RELOAD_UCAC4} from '../../contexts/GlobalStateReducer'
 
-// typing in the search box will execute a filter and dispatch it. The observation screen responds instantly.
 export default function UCAC4Checkbox(props) {
     const [ my_state , my_dispatch] = useGlobalReducer()
 
@@ -18,14 +17,14 @@ export default function UCAC4Checkbox(props) {
     }
 
     return (
-        <Form>
-            <Form.Check
+
+            <Form.Check inline
                 id="ucac4"
                 label="UCAC4"
                 checked = {my_state.ucac4_enabled}
                 onClick={handleClick}
             />
-        </Form>
+
     );
 
 

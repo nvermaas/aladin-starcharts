@@ -27,7 +27,7 @@ export default function DECBox(props) {
             <FormControl
                 type="text"
                 //value= {my_state.magnitude_limit}
-                placeholder= {my_state.aladin_dec}
+                placeholder= {Number(my_state.aladin_dec).toFixed(2)}
                 className="mr-sm-1"
                 onKeyDown={handleKeyDown}>
             </FormControl>

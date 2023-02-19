@@ -40,7 +40,7 @@ export const initialState = {
         status_hygdata       : "unfetched",
         fetched_hygdata      : undefined,
         number_of_hygdata    : 0,
-        hygdata_enabled      : true,
+        hygdata_enabled      : false,
 
         aladin_ra   : config.defaults.ra,
         aladin_dec  : config.defaults.dec,
@@ -51,7 +51,6 @@ export const initialState = {
         magnitude_limit  : 15,
         data_limit: 10000,
         nr_of_rings : 10,
-        status_ucuc4 : "unfetched",
         url_params_checked : false,
 }
 

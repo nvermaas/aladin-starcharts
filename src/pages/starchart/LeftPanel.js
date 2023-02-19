@@ -13,6 +13,7 @@ import RABox from "./RABox";
 import DECBox from "./DECBox";
 import RingsBox from "./RingsBox";
 import HygDataCheckbox from "./HygDataCheckbox";
+import UCAC4Checkbox from "./UCAC4Checkbox";
 
 export default function LeftPanel(props) {
     const [ my_state , my_dispatch] = useGlobalReducer()
@@ -36,7 +37,7 @@ export default function LeftPanel(props) {
                 <Card.Body align={"left"}>
 
                     <table>
-                        <Row><Col sm={4} md={4} lg={4}>Status :</Col><Col sm={8} md={8} lg={8}> {my_state.number_of_stars}  {my_state.status_ucac4}</Col></Row>
+                        <Row><Col sm={4} md={4} lg={4}>UCAC4 :</Col><Col sm={8} md={8} lg={8}> {my_state.number_of_stars}  {my_state.status_ucac4}</Col></Row>
                         <Row><Col sm={4} md={4} lg={4}>HygData :</Col><Col sm={8} md={8} lg={8}> {my_state.number_of_hygdata}  {my_state.status_hygdata}</Col></Row>
                         <Row><Col sm={4} md={4} lg={4}>Position:</Col><Col sm={8} md={8} lg={8}>  {renderRADec(my_state.aladin_ra, my_state.aladin_dec)} </Col></Row>
                         <Row><Col sm={4} md={4} lg={4}>FoV:</Col><Col sm={8} md={8} lg={8}>  {Math.round(my_state.aladin_fov*100)/100} deg</Col></Row>
@@ -48,7 +49,7 @@ export default function LeftPanel(props) {
                         <Row><Col><SelectBackendButton /></Col></Row>
                         <Row><Col>Background Survey (HiPS) :</Col></Row>
                         <Row><Col><SurveyFilterButton /></Col></Row>
-                        <Row><Col><HygDataCheckbox /></Col></Row>
+                        <Row><Col><UCAC4Checkbox /><HygDataCheckbox /></Col></Row>
                         <Row>
                             <Col sm={4} md={4} lg={4}>Mag Limit: <MagnitudeBox/></Col>
                             <Col sm={4} md={4} lg={4}>Max stars : <DataLimitBox/></Col>

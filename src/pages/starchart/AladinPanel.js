@@ -39,7 +39,7 @@ const AladinPanel = (props) => {
             console.log("AladinPanel mounted");
 
             // trigger a fetch of the data
-            my_dispatch({type: RELOAD_UCAC4, reload_ucac4: !my_state.reload_ucac4})
+            //my_dispatch({type: RELOAD_UCAC4, reload_ucac4: !my_state.reload_ucac4})
 
             return () => {
                 console.log("AladinPanel unmounted");
@@ -153,42 +153,45 @@ const AladinPanel = (props) => {
 
         aladin.removeLayers()
 
-        let overlay_stars = window.A.graphicOverlay({name: 'stars',color: 'white', lineWidth: 1});
-        aladin.addOverlay(overlay_stars);
+        if (my_state.ucac4_enabled) {
+            let ucac4_overlay = window.A.graphicOverlay({name: 'stars',color: 'white', lineWidth: 1});
+            aladin.addOverlay(ucac4_overlay);
 
-        let overlay_boxes = window.A.graphicOverlay({name: 'boxes',color: 'red', lineWidth: 3});
-        aladin.addOverlay(overlay_boxes);
+            let ucac4_catalog = window.A.catalog({
+                name: 'UCAC4',
+                shape: 'circle',
+                color: 'yellow',
+                sourceSize: 20,
+                labelColumn: 'j_mag',
+                displayLabel: false,
+                onClick: 'showPopup'
+            });
 
-        let my_catalog = window.A.catalog({
-            name: 'UCAC4',
-            shape : 'circle',
-            color : 'yellow',
-            sourceSize: 20,
-            labelColumn: 'j_mag',
-            displayLabel: false,
-            onClick: 'showPopup'});
+            //onClick: 'showTable'});
 
-        //onClick: 'showTable'});
+            // loop through all the objects and add them to the appropriate layer based a property
+            if (data) {
+                data.forEach(function (object) {
+                    // draw a clickable icon for each observation
+                    //addToCatalog(my_catalog, object)
 
-        // loop through all the objects and add them to the appropriate layer based a property
-        if (data) {
-            data.forEach(function (object) {
-                // draw a clickable icon for each observation
-                //addToCatalog(my_catalog, object)
+                    // calculate a reasonable size based on magnitude
+                    let m = object.j_mag
+                    let base = Math.pow(((15000 - m) / 1000), 2)
+                    let s = base / 20000
 
-                // calculate a reasonable size based on magnitude
-                let m = object.j_mag
-                let base = Math.pow(((15000 - m) / 1000),2)
-                let s = base / 20000
+                    addCircleToOverlay(ucac4_overlay, object, s, 'white')
+                    //addBoxesToOverlay(overlay_boxes, object, 0.01 "white")
+                })
 
-                addCircleToOverlay(overlay_stars, object,s, 'white')
-                //addBoxesToOverlay(overlay_boxes, object, 0.01 "white")
-            })
-
-            aladin.addCatalog(my_catalog);
+                aladin.addCatalog(ucac4_catalog);
+            }
         }
 
         if (my_state.hygdata_enabled) {
+            let hyg_boxes_overlay = window.A.graphicOverlay({name: 'boxes',color: 'red', lineWidth: 3});
+            aladin.addOverlay(hyg_boxes_overlay);
+
             let my_label_catalog = window.A.catalog({
                 name: 'label',
                 shape: 'square',
@@ -203,7 +206,7 @@ const AladinPanel = (props) => {
                 hygdata.forEach(function (object) {
                     // draw a clickable icon for each observation
 
-                    addBoxesToOverlay(overlay_boxes, object, 0.03, "red")
+                    addBoxesToOverlay(hyg_boxes_overlay, object, 0.03, "red")
                 })
 
                 aladin.addCatalog(my_label_catalog);

@@ -14,8 +14,9 @@ export default function FetchUCAC4(skipAbortController) {
     const controller = new AbortController();
 
     useEffect(() => {
-            fetchStars()
-
+            if (my_state.ucac4_enabled) {
+                fetchStars()
+            }
             if (!skipAbortController) {
                 return () => {
                     controller.abort();

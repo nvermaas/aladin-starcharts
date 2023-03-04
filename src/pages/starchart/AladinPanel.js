@@ -177,17 +177,17 @@ const AladinPanel = (props) => {
         }
 
         if (my_state.hygdata_enabled) {
-            let hyg_boxes_overlay = window.A.graphicOverlay({name: 'boxes',color: 'red', lineWidth: 3});
-            aladin.addOverlay(hyg_boxes_overlay);
-
 
             let hyg_catalog = window.A.catalog({
                 name: 'hyg_catalog',
                 shape: 'square',
-                color: 'red',
-                sourceSize: 20,
-                labelColumn: 'HipparcosID',
-                displayLabel: my_state.labels_enabled,
+                color: 'black',
+                sourceSize: 0,
+                //labelColumn: 'HipparcosID',
+                labelColumn: my_state.label_field,
+                displayLabel: my_state.hygdata_enabled,
+                labelFont: '16px sans-serif',
+                labelColor: 'yellow',
                 onClick: 'showPopup'
             });
 
@@ -225,6 +225,11 @@ const AladinPanel = (props) => {
                 object.Declination,
                 {
                     HipparcosID: object.HipparcosID,
+                    BayerFlamsteed: object.BayerFlamsteed,
+                    HenryDraperID: object.HenryDraperID,
+                    HarvardRevisedID: object.HarvardRevisedID,
+                    ProperName: object.ProperName,
+                    GlieseID: object.GlieseID,
                     Magnitude: object.Magnitude,
                 },
             )]

@@ -61,5 +61,6 @@ export const config = {
             "name": "SURF Research Cloud (psycopg2)",
             "url" : "http://145.38.187.31",
         },
-    ]
+    ],
+    "labelfields" : ['HipparcosID','BayerFlamsteed','HenryDraperID','HarvardRevisedID','ProperName','GlieseID']
 }

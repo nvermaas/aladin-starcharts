@@ -16,7 +16,6 @@ export default function InlineCheckboxesLayers(props) {
         <Form>
             <UCAC4Checkbox />
             <HygDataCheckbox />
-            <StarLabelsCheckbox />
             <SurveyCheckbox />
         </Form>
     );

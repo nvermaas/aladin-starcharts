@@ -15,6 +15,7 @@ export const SET_FETCHED_HYGDATA = 'SET_FETCHED_HYGDATA'
 export const SET_NUMBER_OF_HYGDATA = 'SET_NUMBER_OF_HYGDATA'
 export const SET_HYGDATA_ENABLED = 'SET_HYGDATA_ENABLED'
 export const SET_LABELS_ENABLED = 'SET_LABELS_ENABLED'
+export const SET_LABEL_FIELD = 'SET_LABEL_FIELD'
 
 export const ALADIN_RA = 'ALADIN_RA'
 export const ALADIN_DEC = 'ALADIN_DEC'
@@ -36,7 +37,7 @@ export const initialState = {
         status_ucac4       : "unfetched",
         fetched_ucac4      : undefined,
         number_of_stars    : 0,
-        ucac4_enabled      : true,
+        ucac4_enabled      : false,
         ucac4_backend       : config.backends[0],
 
         status_hygdata       : "unfetched",
@@ -44,6 +45,7 @@ export const initialState = {
         number_of_hygdata    : 0,
         hygdata_enabled      : false,
         labels_enabled      : false,
+        label_field         : 'HipparcosID',
 
         aladin_ra   : config.defaults.ra,
         aladin_dec  : config.defaults.dec,
@@ -114,6 +116,12 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 labels_enabled: action.labels_enabled
+            };
+
+        case SET_LABEL_FIELD:
+            return {
+                ...state,
+                label_field: action.label_field
             };
 
         case SET_STATUS_HYGDATA:

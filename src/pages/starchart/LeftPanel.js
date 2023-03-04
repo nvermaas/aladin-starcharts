@@ -15,6 +15,7 @@ import RingsBox from "./RingsBox";
 import HygDataCheckbox from "./HygDataCheckbox";
 import UCAC4Checkbox from "./UCAC4Checkbox";
 import InlineCheckboxesLayers from "./InlineCheckboxesLayers";
+import SelectLabelButton from "./SelectLabelButton";
 
 export default function LeftPanel(props) {
     const [ my_state , my_dispatch] = useGlobalReducer()
@@ -45,8 +46,14 @@ export default function LeftPanel(props) {
                         <Row></Row>
 
                         <hr></hr>
-                        <Row><Col>Choose Backend    :</Col></Row>
-                        <Row><Col><SelectBackendButton /></Col></Row>
+                        <Row>
+                            <Col sm={6} md={6} lg={6}>Choose Backend    :</Col>
+                            <Col sm={4} md={4} lg={4}>Labels    :</Col>
+                        </Row>
+                        <Row>
+                            <Col sm={6} md={6} lg={6} ><SelectBackendButton /></Col>
+                            <Col sm={4} md={4} lg={4} ><SelectLabelButton /></Col>
+                        </Row>
                         <Row><Col><InlineCheckboxesLayers /></Col></Row>
 
                         <Row>

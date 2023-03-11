@@ -63,7 +63,7 @@
   background-color: lightgray;
   color: darkblue;
   #border: #fff !important;
-  width: 170px;
+  width: 150px;
   font-family: "Brush Script MT";
   font-size: 20px
 }
@@ -73,7 +73,7 @@
   color: red;
   font-family: "Arial";
   font-size: 15px;
-  width: 270px
+  width: 250px
 }
 
 .dropdown-toggle {
@@ -81,5 +81,5 @@
   color: darkblue;
   font-family: "Arial";
   font-size: 15px;
-  width: 270px
+  width: 250px
 }

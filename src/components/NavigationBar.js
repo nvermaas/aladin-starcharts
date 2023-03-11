@@ -11,7 +11,7 @@ export default function NavigationBar() {
     const [ my_state , my_dispatch] = useGlobalReducer()
 
     return (
-        <Navbar bg="dark" variant="dark">
+        <Navbar variant="dark">
 
             <img alt='' src={logo} width="30" height="30" className="d-inline-block align-top"/>
 

@@ -11,7 +11,7 @@ import {
     RELOAD_UCAC4,
 } from '../../contexts/GlobalStateReducer'
 
-import { getReloadIcon } from '../../utils/styling'
+import { getResetIcon } from '../../utils/styling'
 
 export default function ResetButton(props) {
     const [ my_state , my_dispatch] = useGlobalReducer()
@@ -25,5 +25,5 @@ export default function ResetButton(props) {
         my_dispatch({type: RELOAD_UCAC4, reload_ucac4: !my_state.reload_ucac4})
     }
 
-    return <Button variant="outline-primary" onClick={() => handleClick()}>{getReloadIcon()}&nbsp;Reset View</Button>
+    return <Button className="custom-btn" variant="outline-primary" onClick={() => handleClick()}>{getResetIcon()}&nbsp;Reset View</Button>
 }

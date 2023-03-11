@@ -63,3 +63,10 @@ export const getReloadIcon = () => {
     let size = 'sm'
     return <FontAwesomeIcon size={size} icon={icon} color={color}  />
 }
+
+export const getResetIcon = () => {
+    let icon = faGlobe
+    let color = "darkblue"
+    let size = 'sm'
+    return <FontAwesomeIcon size={size} icon={icon} color={color}  />
+}

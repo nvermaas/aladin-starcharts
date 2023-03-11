@@ -41,21 +41,22 @@ export default function LeftPanel(props) {
                     <table>
                         <Row><Col sm={4} md={4} lg={4}>UCAC4 :</Col><Col sm={8} md={8} lg={8}> {my_state.number_of_stars}  {my_state.status_ucac4}</Col></Row>
                         <Row><Col sm={4} md={4} lg={4}>HygData :</Col><Col sm={8} md={8} lg={8}> {my_state.number_of_hygdata}  {my_state.status_hygdata}</Col></Row>
-                        <Row><Col sm={4} md={4} lg={4}>Object :</Col><Col sm={8} md={8} lg={8}> {my_state.selected_object}</Col></Row>
-
-                        <Row></Row>
 
                         <hr></hr>
-                        <Row>
-                            <Col sm={6} md={6} lg={6}>Choose Backend    :</Col>
-                            <Col sm={4} md={4} lg={4}>Labels    :</Col>
-                        </Row>
-                        <Row>
-                            <Col sm={6} md={6} lg={6} ><SelectBackendButton /></Col>
-                            <Col sm={4} md={4} lg={4} ><SelectLabelButton /></Col>
-                        </Row>
-                        <Row><Col><InlineCheckboxesLayers /></Col></Row>
 
+                        <Row>
+                            <Col sm={3} md={3} lg={3}>Backend: </Col>
+                            <Col sm={9} md={9} lg={9} ><SelectBackendButton /></Col>
+                        </Row>
+                        <Row>
+                            <Col sm={3} md={3} lg={3}>Labels: </Col>
+                            <Col sm={9} md={9} lg={9} ><SelectLabelButton /></Col>
+                        </Row>
+                        <Row>
+                            <Col sm={3} md={3} lg={3}>Data: </Col>
+                            <Col sm={9} md={9} lg={9}><InlineCheckboxesLayers /></Col>
+                        </Row>
+                        <hr></hr>
                         <Row>
                             <Col sm={4} md={4} lg={4}>Mag Limit: <MagnitudeBox/></Col>
                             <Col sm={4} md={4} lg={4}>Max stars : <DataLimitBox/></Col>
@@ -65,8 +66,12 @@ export default function LeftPanel(props) {
                             <Col sm={4} md={4} lg={4}>RA : <RABox/></Col>
                             <Col sm={4} md={4} lg={4}>dec : <DECBox/></Col>
                         </Row>
-                        <Row><Col><ResetButton /></Col></Row>
-                        <Row><Col><RefreshButton /></Col></Row>
+                        <hr></hr>
+                        <Row>
+                            <Col><ResetButton /></Col>
+                            <Col><RefreshButton /></Col>
+                        </Row>
+
                     </table>
                 </Card.Body>
             </Card>

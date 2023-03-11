@@ -13,5 +13,5 @@ export default function RefreshButton(props) {
         my_dispatch({type: RELOAD_UCAC4, reload_ucac4: !my_state.reload_ucac4})
     }
 
-    return <Button variant="outline-primary" onClick={() => handleClick()}>{getReloadIcon()}&nbsp;Reload Data</Button>
+    return <Button className="custom-btn" variant="outline-primary" onClick={() => handleClick()}>{getReloadIcon()}&nbsp;Reload Data</Button>
 }

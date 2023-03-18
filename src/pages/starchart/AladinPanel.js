@@ -245,7 +245,7 @@ const AladinPanel = (props) => {
 
                 aladin.addCatalog(extra_catalog_plus);
 
-                let extra_plotting_circle = getShapes(extra_plotting,'circle_outline')
+                let extra_plotting_circle = getShapes(extra_plotting,'circle')
 
                 let extra_catalog_circle = window.A.catalog({
                     name: 'extra_catalog_circle',

@@ -59,7 +59,7 @@ export function filterPlanets(planets, searchText, maxResults) {
 export function getShapes(objects, shape, maxResults) {
 
     return objects.filter((object) => {
-        if (object.shape===shape) {
+        if (object.shape.includes(shape)) {
             return true;
         }
         return false;

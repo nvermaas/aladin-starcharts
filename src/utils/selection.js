@@ -55,3 +55,13 @@ export function filterPlanets(planets, searchText, maxResults) {
         return false;
     }).slice(0, maxResults);
 }
+
+export function getShapes(objects, shape, maxResults) {
+
+    return objects.filter((object) => {
+        if (object.shape===shape) {
+            return true;
+        }
+        return false;
+    }).slice(0, maxResults);;
+}

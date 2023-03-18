@@ -10,6 +10,7 @@ import {
     SET_SELECTED_OBJECT,
     RELOAD_UCAC4
 } from '../../contexts/GlobalStateReducer'
+import {getShapes} from "../../utils/selection";
 
 const AladinPanel = (props) => {
     const ref = useRef();
@@ -218,27 +219,51 @@ const AladinPanel = (props) => {
 
         if (my_state.extra_plotting_enabled) {
 
-            let extra_catalog = window.A.catalog({
-                name: 'extra_catalog',
-                shape: "plus",
-                color: 'red',
-                sourceSize: 15,
-                //labelColumn: 'HipparcosID',
-                labelColumn: "label",
-                displayLabel: my_state.extra_plotting_enabled,
-                labelFont: '16px sans-serif',
-                labelColor: 'white',
-                onClick: 'showPopup'
-            });
+
 
             if (my_state.extra_plotting) {
                 let extra_plotting = JSON.parse(my_state.extra_plotting)
 
-                extra_plotting.forEach(function (object) {
-                    addToCatalog(extra_catalog, object)
+                // create a catalog per shape
+                let extra_plotting_plus = getShapes(extra_plotting,'cross')
+
+                let extra_catalog_plus = window.A.catalog({
+                    name: 'extra_catalog_plus',
+                    shape: "plus",
+                    color: 'red',
+                    sourceSize: 10,
+                    labelColumn: "label",
+                    displayLabel: my_state.extra_plotting_enabled,
+                    labelFont: '16px sans-serif',
+                    labelColor: 'red',
+                    onClick: 'showPopup'
+                });
+
+                extra_plotting_plus.forEach(function (object) {
+                    addToCatalog(extra_catalog_plus, object)
                 })
 
-                aladin.addCatalog(extra_catalog);
+                aladin.addCatalog(extra_catalog_plus);
+
+                let extra_plotting_circle = getShapes(extra_plotting,'circle_outline')
+
+                let extra_catalog_circle = window.A.catalog({
+                    name: 'extra_catalog_circle',
+                    shape: "circle",
+                    color: 'yellow',
+                    sourceSize: 20,
+                    labelColumn: "label",
+                    displayLabel: my_state.extra_plotting_enabled,
+                    labelFont: '16px sans-serif',
+                    labelColor: 'yellow',
+                    onClick: 'showPopup'
+                });
+
+                extra_plotting_circle.forEach(function (object) {
+                    addToCatalog(extra_catalog_circle, object)
+                })
+
+                aladin.addCatalog(extra_catalog_circle);
             }
 
 
@@ -275,7 +300,18 @@ const AladinPanel = (props) => {
             my_catalog.addSources(source);
         }
 
-        if (my_catalog.name === 'extra_catalog') {
+        if (my_catalog.name === 'extra_catalog_plus') {
+            let source = [window.A.source(
+                object.ra,
+                object.dec,
+                {
+                    label: object.label,
+                },
+            )]
+            my_catalog.addSources(source);
+        }
+
+        if (my_catalog.name === 'extra_catalog_circle') {
             let source = [window.A.source(
                 object.ra,
                 object.dec,

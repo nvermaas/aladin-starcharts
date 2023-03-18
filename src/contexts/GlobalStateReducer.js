@@ -32,13 +32,24 @@ export const SET_NR_OF_RINGS = 'SET_NR_OF_RINGS'
 
 export const URL_PARAMS_CHECKED = 'URL_PARAMS_CHECKED'
 
+const default_backend =
+    process.env.NODE_ENV === "development"
+        ? {
+            "name": "localhost:8000",
+            "url" : "http://localhost:8000",
+        }
+        : {
+            "name": "uilennest (psycopg2)",
+            "url" : "https://uilennest.net/psycopg2",
+        };
+
 export const initialState = {
 
         status_ucac4       : "unfetched",
         fetched_ucac4      : undefined,
         number_of_stars    : 0,
         ucac4_enabled      : false,
-        ucac4_backend       : config.backends[0],
+        ucac4_backend       : default_backend,
 
         status_hygdata       : "unfetched",
         fetched_hygdata      : undefined,

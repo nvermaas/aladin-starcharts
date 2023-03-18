@@ -16,8 +16,9 @@ export default function WelcomeCard(props) {
                     </Table>
 
                     <Card.Text>
-                        <li><b>UCAC4</b>: Show as many points as you want from a 114M star database</li>
-
+                        <li><b>UCAC4</b>: Magnitude 15 starchart based on 114M UCAC4 star database</li>
+                        <li><b>surveys</b>: background surveys from CDS</li>
+                        <li><b>transients</b>: Planets, asteroids and comets</li>
                     </Card.Text>
                 </Card.Body>
             </Card>

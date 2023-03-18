@@ -204,6 +204,8 @@ const AladinPanel = (props) => {
 
                 aladin.addCatalog(hyg_catalog);
             }
+
+            //aladin.addCatalog(window.A.catalogFromNED('16 41 40 +36 27 00', 1, {onClick: 'showPopup', shape: 'plus'}));
         }
     }
 

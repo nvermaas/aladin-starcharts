@@ -50,13 +50,10 @@
 .navbar {
   background-color: gray;
   font-family: "Raleway";
-  font-size: 20px;
 }
 
 .nav-link {
-
-  font-family: "Brush Script MT";
-  font-size: 30px;
+  font-family: "Raleway";
 }
 
 .custom-btn {
@@ -64,14 +61,14 @@
   color: darkblue;
   #border: #fff !important;
   width: 150px;
-  font-family: "Brush Script MT";
-  font-size: 20px
+  font-family: "Raleway";
+  font-size: 15px
 }
 
 .dropdown {
   background-color: lightgray;
   color: red;
-  font-family: "Arial";
+  font-family: "Raleway";
   font-size: 15px;
   width: 250px
 }
@@ -79,7 +76,7 @@
 .dropdown-toggle {
   background-color: lightgray;
   color: darkblue;
-  font-family: "Arial";
+  font-family: "Raleway";
   font-size: 15px;
   width: 250px
 }

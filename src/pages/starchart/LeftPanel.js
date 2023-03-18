@@ -70,7 +70,7 @@ export default function LeftPanel(props) {
                 </Card.Body>
 
             </Card>
-            {renderExtraPlotting}
+
         </div>
     );
 

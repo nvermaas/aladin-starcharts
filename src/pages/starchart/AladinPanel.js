@@ -251,7 +251,7 @@ const AladinPanel = (props) => {
                     name: 'extra_catalog_circle',
                     shape: "circle",
                     color: 'yellow',
-                    sourceSize: 20,
+                    sourceSize: 15,
                     labelColumn: "label",
                     displayLabel: my_state.extra_plotting_enabled,
                     labelFont: '16px sans-serif',

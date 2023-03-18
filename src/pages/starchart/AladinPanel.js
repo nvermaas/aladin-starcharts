@@ -153,9 +153,6 @@ const AladinPanel = (props) => {
 
         let d = size/n
 
-
-
-
         let s = size
         for (let i = 0; i < n; i++) {
             my_overlay.add(window.A.circle(object.ra, object.dec,s, {color: color, lineWidth: 2}));
@@ -175,6 +172,7 @@ const AladinPanel = (props) => {
         aladin.removeLayers()
 
         if (my_state.ucac4_enabled) {
+
             let ucac4_overlay = window.A.graphicOverlay({name: 'stars',color: 'white', lineWidth: 1});
             aladin.addOverlay(ucac4_overlay);
 
@@ -182,12 +180,8 @@ const AladinPanel = (props) => {
             if (data) {
                 data.forEach(function (object) {
                     // calculate a reasonable size based on magnitude
-                    let m = object.j_mag
-
-
-                    addCircleToOverlay(ucac4_overlay, object, m, 'white')
+                    addCircleToOverlay(ucac4_overlay, object, object.j_mag, 'white')
                 })
-
             }
         }
 
@@ -219,6 +213,34 @@ const AladinPanel = (props) => {
 
                 aladin.addCatalog(hyg_catalog);
             }
+
+        }
+
+        if (my_state.extra_plotting_enabled) {
+
+            let extra_catalog = window.A.catalog({
+                name: 'extra_catalog',
+                shape: "plus",
+                color: 'red',
+                sourceSize: 15,
+                //labelColumn: 'HipparcosID',
+                labelColumn: "label",
+                displayLabel: my_state.extra_plotting_enabled,
+                labelFont: '16px sans-serif',
+                labelColor: 'white',
+                onClick: 'showPopup'
+            });
+
+            if (my_state.extra_plotting) {
+                let extra_plotting = JSON.parse(my_state.extra_plotting)
+
+                extra_plotting.forEach(function (object) {
+                    addToCatalog(extra_catalog, object)
+                })
+
+                aladin.addCatalog(extra_catalog);
+            }
+
 
             //aladin.addCatalog(window.A.catalogFromNED('16 41 40 +36 27 00', 1, {onClick: 'showPopup', shape: 'plus'}));
         }
@@ -253,6 +275,16 @@ const AladinPanel = (props) => {
             my_catalog.addSources(source);
         }
 
+        if (my_catalog.name === 'extra_catalog') {
+            let source = [window.A.source(
+                object.ra,
+                object.dec,
+                {
+                    label: object.label,
+                },
+            )]
+            my_catalog.addSources(source);
+        }
     }
 
 

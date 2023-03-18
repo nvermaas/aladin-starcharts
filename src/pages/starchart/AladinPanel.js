@@ -132,14 +132,30 @@ const AladinPanel = (props) => {
     }, [my_state.aladin_reload])
 
 
-    const addCircleToOverlay = (my_overlay, object, size, color) => {
+    const addCircleToOverlay = (my_overlay, object, magnitude, color) => {
         // ring algorithm
         // 2 deg = 3
         // 1 deg = 10
 
+        // how many rings are needed?
+        // depends on zoom level and magnitude
+
+        let base = Math.pow(((15000 - magnitude) / 1000), 2)
+        let size = base / 20000
+
+        // adjust n based on size.
+        let pixel_distance = size / my_state.aladin_fov * 100
+        console.error(pixel_distance)
+
         // create n circles on equal distance to simulate filling
         let n = my_state.nr_of_rings
+        //let n = Math.round(pixel_distance + 5)
+
         let d = size/n
+
+
+
+
         let s = size
         for (let i = 0; i < n; i++) {
             my_overlay.add(window.A.circle(object.ra, object.dec,s, {color: color, lineWidth: 2}));
@@ -167,10 +183,9 @@ const AladinPanel = (props) => {
                 data.forEach(function (object) {
                     // calculate a reasonable size based on magnitude
                     let m = object.j_mag
-                    let base = Math.pow(((15000 - m) / 1000), 2)
-                    let s = base / 20000
 
-                    addCircleToOverlay(ucac4_overlay, object, s, 'white')
+
+                    addCircleToOverlay(ucac4_overlay, object, m, 'white')
                 })
 
             }

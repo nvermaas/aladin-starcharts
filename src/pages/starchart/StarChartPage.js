@@ -6,7 +6,10 @@ import {
     ALADIN_RA,
     ALADIN_DEC,
     ALADIN_FOV,
-    RELOAD_UCAC4, URL_PARAMS_CHECKED
+    RELOAD_UCAC4,
+    SET_CHART_NAME,
+    URL_PARAMS_CHECKED,
+    SET_EXTRA_PLOTTING
 } from '../../contexts/GlobalStateReducer'
 
 import LeftPanel from './LeftPanel'
@@ -21,6 +24,9 @@ export default function StarChartPage(props) {
         let ra = props.params.get("ra")
         let dec = props.params.get("dec")
         let fov = props.params.get("fov")
+        let name = props.params.get("name")
+        let extra = props.params.get("extra")
+
         if (ra) {
             my_dispatch({type: ALADIN_RA, aladin_ra: ra})
         }
@@ -30,9 +36,16 @@ export default function StarChartPage(props) {
         if (fov) {
             my_dispatch({type: ALADIN_FOV, aladin_fov: fov})
         }
+        if (name) {
+            my_dispatch({type: SET_CHART_NAME, chart_name: name})
+        }
+        if (extra) {
+            my_dispatch({type: SET_EXTRA_PLOTTING, extra_plotting: extra})
+        }
         if (ra || dec || fov) {
             my_dispatch({type: RELOAD_UCAC4, reload_ucac4: !my_state.reload_ucac4})
         }
+
         my_dispatch({type: URL_PARAMS_CHECKED, url_params_checked: true})
     }
     return (

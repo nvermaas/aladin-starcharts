@@ -27,6 +27,11 @@ export default function LeftPanel(props) {
         }
     }
 
+    let renderExtraPlotting
+    if (my_state.extra_plotting_enabled) {
+        renderExtraPlotting = my_state.extra_plotting
+    }
+
     return (
         <div className="App">
             <Card>
@@ -34,6 +39,8 @@ export default function LeftPanel(props) {
                 <Card.Body align={"left"}>
 
                     <table>
+                        <h2>{my_state.chart_name}</h2>
+                        <hr></hr>
                         <Row><Col sm={4} md={4} lg={4}>UCAC4 :</Col><Col sm={8} md={8} lg={8}> {my_state.number_of_stars}  {my_state.status_ucac4}</Col></Row>
                         <Row><Col sm={4} md={4} lg={4}>HygData :</Col><Col sm={8} md={8} lg={8}> {my_state.number_of_hygdata}  {my_state.status_hygdata}</Col></Row>
 
@@ -59,8 +66,11 @@ export default function LeftPanel(props) {
                         </Row>
 
                     </table>
+
                 </Card.Body>
+
             </Card>
+            {renderExtraPlotting}
         </div>
     );
 

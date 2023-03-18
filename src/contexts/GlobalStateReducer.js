@@ -31,6 +31,9 @@ export const SET_DATA_LIMIT = 'SET_DATA_LIMIT'
 export const SET_NR_OF_RINGS = 'SET_NR_OF_RINGS'
 
 export const URL_PARAMS_CHECKED = 'URL_PARAMS_CHECKED'
+export const SET_CHART_NAME = 'SET_CHART_NAME'
+export const SET_EXTRA_PLOTTING = 'SET_EXTRA_PLOTTING'
+export const SET_EXTRA_PLOTTING_ENABLED = 'SET_EXTRA_PLOTTING_ENABLED'
 
 const default_backend =
     process.env.NODE_ENV === "development"
@@ -227,6 +230,24 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 url_params_checked: action.url_params_checked
+            };
+
+        case SET_CHART_NAME:
+            return {
+                ...state,
+                chart_name: action.chart_name
+            };
+
+        case SET_EXTRA_PLOTTING:
+            return {
+                ...state,
+                extra_plotting: action.extra_plotting
+            };
+
+        case SET_EXTRA_PLOTTING_ENABLED:
+            return {
+                ...state,
+                extra_plotting_enabled: action.extra_plotting_enabled
             };
 
         default:

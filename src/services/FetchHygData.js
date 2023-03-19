@@ -63,7 +63,7 @@ export default function FetchHygData(skipAbortController) {
                 console.log('Fetch was aborted');
                 my_dispatch({type: SET_NUMBER_OF_HYGDATA, number_of_hygdata: 0})
             } else {
-                console.log(error)
+                alert(error)
                 my_dispatch({type: SET_NUMBER_OF_HYGDATA, number_of_hygdata: 0})
                 my_dispatch({type: SET_STATUS_HYGDATA, status_hygdata: error})
             }

@@ -34,6 +34,8 @@ export const URL_PARAMS_CHECKED = 'URL_PARAMS_CHECKED'
 export const SET_CHART_NAME = 'SET_CHART_NAME'
 export const SET_EXTRA_PLOTTING = 'SET_EXTRA_PLOTTING'
 export const SET_EXTRA_PLOTTING_ENABLED = 'SET_EXTRA_PLOTTING_ENABLED'
+export const SET_NED_ENABLED = 'SET_NED_ENABLED'
+export const SET_VIZIER_ENABLED = 'SET_VIZIER_ENABLED'
 
 const default_backend =
     process.env.NODE_ENV === "development"
@@ -248,6 +250,18 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 extra_plotting_enabled: action.extra_plotting_enabled
+            };
+
+        case SET_NED_ENABLED:
+            return {
+                ...state,
+                ned_enabled: action.ned_enabled
+            };
+
+        case SET_VIZIER_ENABLED:
+            return {
+                ...state,
+                vizier_enabled: action.vizier_enabled
             };
 
         default:

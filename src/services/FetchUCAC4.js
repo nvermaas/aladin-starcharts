@@ -64,7 +64,7 @@ export default function FetchUCAC4(skipAbortController) {
                 my_dispatch({type: SET_NUMBER_OF_STARS, number_of_stars: 0})
                 //my_dispatch({type: SET_STATUS_UCAC4, status_ucac4: 'fetch aborted'})
             } else {
-                console.log(error)
+                alert(error)
                 my_dispatch({type: SET_NUMBER_OF_STARS, number_of_stars: 0})
                 my_dispatch({type: SET_STATUS_UCAC4, status_ucac4: error})
             }

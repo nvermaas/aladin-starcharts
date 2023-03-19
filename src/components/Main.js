@@ -43,7 +43,7 @@ export default function Main() {
                 </Switch>
             </div>
             <footer>
-                <small> (C) 2023 - Nico Vermaas - version 18 mar 2023</small>
+                <small> (C) 2023 - Nico Vermaas - version 19 mar 2023</small>
             </footer>
         </Router>
 

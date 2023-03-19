@@ -219,8 +219,6 @@ const AladinPanel = (props) => {
 
         if (my_state.extra_plotting_enabled) {
 
-
-
             if (my_state.extra_plotting) {
                 let extra_plotting = JSON.parse(my_state.extra_plotting)
 
@@ -265,10 +263,21 @@ const AladinPanel = (props) => {
 
                 aladin.addCatalog(extra_catalog_circle);
             }
-
-
-            //aladin.addCatalog(window.A.catalogFromNED('16 41 40 +36 27 00', 1, {onClick: 'showPopup', shape: 'plus'}));
         }
+
+
+        if (my_state.vizier_enabled) {
+            let radec_string = my_state.aladin_ra + ' '  + my_state.aladin_dec
+            aladin.addCatalog(window.A.catalogFromSimbad(radec_string, my_state.aladin_fov, {color: 'lightgreen',onClick: 'showPopup'}));
+
+            //aladin.addCatalog(window.A.catalogFromVizieR('I/311/hip2', 'M 13', 5, {onClick: 'showPopup'}));
+        }
+
+        if (my_state.vizier_enabled) {
+            let radec_string = my_state.aladin_ra + ' '  + my_state.aladin_dec
+            //aladin.addCatalog(window.A.catalogFromNED(radec_string, my_state.aladin_fov, {color: 'yellow',onClick: 'showPopup'}));
+        }
+
     }
 
     // get the bounding box in world coordinates from an observation

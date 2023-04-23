@@ -35,7 +35,7 @@ export const SET_CHART_NAME = 'SET_CHART_NAME'
 export const SET_EXTRA_PLOTTING = 'SET_EXTRA_PLOTTING'
 export const SET_EXTRA_PLOTTING_ENABLED = 'SET_EXTRA_PLOTTING_ENABLED'
 export const SET_NED_ENABLED = 'SET_NED_ENABLED'
-export const SET_VIZIER_ENABLED = 'SET_VIZIER_ENABLED'
+export const SET_SIMBAD_ENABLED = 'SET_SIMBAD_ENABLED'
 
 const default_backend =
     process.env.NODE_ENV === "development"
@@ -258,10 +258,10 @@ export const reducer = (state, action) => {
                 ned_enabled: action.ned_enabled
             };
 
-        case SET_VIZIER_ENABLED:
+        case SET_SIMBAD_ENABLED:
             return {
                 ...state,
-                vizier_enabled: action.vizier_enabled
+                simbad_enabled: action.simbad_enabled
             };
 
         default:

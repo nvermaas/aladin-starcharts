@@ -169,7 +169,6 @@ const AladinPanel = (props) => {
 
     // create the catalog layer
     const createLayers = (aladin, data, hygdata) => {
-
         aladin.removeLayers()
 
         if (my_state.ucac4_enabled) {
@@ -266,14 +265,14 @@ const AladinPanel = (props) => {
         }
 
 
-        if (my_state.vizier_enabled) {
+        if (my_state.simbad_enabled) {
             let radec_string = my_state.aladin_ra + ' '  + my_state.aladin_dec
             aladin.addCatalog(window.A.catalogFromSimbad(radec_string, my_state.aladin_fov, {color: 'lightgreen',onClick: 'showPopup'}));
 
             //aladin.addCatalog(window.A.catalogFromVizieR('I/311/hip2', 'M 13', 5, {onClick: 'showPopup'}));
         }
 
-        if (my_state.vizier_enabled) {
+        if (my_state.ned_enabled) {
             let radec_string = my_state.aladin_ra + ' '  + my_state.aladin_dec
             //aladin.addCatalog(window.A.catalogFromNED(radec_string, my_state.aladin_fov, {color: 'yellow',onClick: 'showPopup'}));
         }

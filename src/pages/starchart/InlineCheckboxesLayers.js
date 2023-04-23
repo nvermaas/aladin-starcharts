@@ -7,7 +7,7 @@ import HygDataCheckbox from "./HygDataCheckbox";
 
 import SurveyCheckbox from "./SurveyCheckbox";
 import ExtraPlottingCheckbox from "./ExtraPlottingCheckbox";
-import VizierCheckbox from "./VizierCheckbox";
+import SimbadCheckbox from "./SimbadCheckbox";
 
 // typing in the search box will execute a filter and dispatch it. The observation screen responds instantly.
 export default function InlineCheckboxesLayers(props) {
@@ -23,7 +23,7 @@ export default function InlineCheckboxesLayers(props) {
             <UCAC4Checkbox />
             <HygDataCheckbox />
             <SurveyCheckbox />
-            <VizierCheckbox />
+            <SimbadCheckbox />
             {renderExtra}
         </Form>
     );

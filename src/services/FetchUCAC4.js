@@ -27,14 +27,21 @@ export default function FetchUCAC4(skipAbortController) {
 
     // translate the state to different url parameters, depending on the type of backend (fastapi, drf)
     function constructUrl()  {
-        let d = (my_state.aladin_fov / 2)
-        let ra_min = Number(my_state.aladin_ra) - d
-        let ra_max = Number(my_state.aladin_ra) + d
-        let dec_min = Number(my_state.aladin_dec) - d
-        let dec_max = Number(my_state.aladin_dec) + d
+        let radius = (my_state.aladin_fov / 2)
+        let ra_min = Number(my_state.aladin_ra) - radius
+        let ra_max = Number(my_state.aladin_ra) + radius
+        let dec_min = Number(my_state.aladin_dec) - radius
+        let dec_max = Number(my_state.aladin_dec) + radius
 
+        // rectangle_search (obsolete?)
         let url = my_state.ucac4_backend.url + "/stars_rectangle/?ra_min=" + ra_min.toString() + "&ra_max=" + ra_max.toString()
         url += "&dec_min=" + dec_min.toString() + "&dec_max=" + dec_max.toString()
+        url += "&j_mag=" + (my_state.magnitude_limit*1000).toString()
+        url += "&limit=" + my_state.data_limit.toString()
+
+        // cone search
+        url = my_state.ucac4_backend.url + "/stars_cone/?ra=" + my_state.aladin_ra + "&dec=" + my_state.aladin_dec
+        url += "&radius=" + radius.toString()
         url += "&j_mag=" + (my_state.magnitude_limit*1000).toString()
         url += "&limit=" + my_state.data_limit.toString()
 

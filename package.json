@@ -1,5 +1,6 @@
 {
-  "name": "astron-hips",
+  "name": "aladin-starcharts",
+  "homepage": "aladin-starcharts",
   "version": "1.0.0",
   "private": true,
   "dependencies": {

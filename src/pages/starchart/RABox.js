@@ -1,15 +1,15 @@
 import React from 'react';
-import { Form, FormControl, Button } from 'react-bootstrap';
+import { Form, FormControl } from 'react-bootstrap';
 import { useGlobalReducer } from '../../contexts/GlobalContext';
 
 import {RELOAD_UCAC4, ALADIN_RA} from '../../contexts/GlobalStateReducer'
 
 // typing in the search box will execute a filter and dispatch it. The observation screen responds instantly.
-export default function RABox(props) {
+export default function RABox() {
     const [ my_state , my_dispatch] = useGlobalReducer()
 
     // use if you want the search to start while you hit enter
-        const handleKeyDown = (event) => {
+    const handleKeyDown = (event) => {
         let aladin_ra = event.target.value.toUpperCase()
 
         if (event.keyCode === 13) {

@@ -1,0 +1,30 @@
+name: build-deploy-docker
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-deploy-astroview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: execute build & deploy procedure on local server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.MY_HOST }}
+          username: ${{ secrets.MY_USER }}
+          password: ${{ secrets.MY_PASSWORD }}
+          #key: ${{ secrets.MY_PRIVATE_KEY }}
+          script: |
+            cd ~/my_docker/aladin-starcharts
+            git pull
+            npm install --openssl-legacy-provider
+            npm audit fix
+            npm run build --openssl-legacy-provider
+            docker build -t aladin-starcharts:latest .
+   
+            # deploy with docker-compose
+            cd $HOME/shared
+            docker stop aladin-starcharts
+            docker rm -f aladin-starcharts
+            docker-compose -p astronest -f ~/shared/docker-compose-astro.yml up -d

@@ -16,8 +16,6 @@ import StarChartPage from "../pages/starchart/StarChartPage";
 import ConfigurationPage from "../pages/configuration/ConfigurationPage";
 import React from "react";
 
-import {useGlobalReducer} from "../contexts/GlobalContext";
-
 export default function Main() {
     const queryParameters = new URLSearchParams(window.location.search)
 
@@ -43,7 +41,7 @@ export default function Main() {
                 </Switch>
             </div>
             <footer>
-                <small> (C) 2023 - Nico Vermaas - version 6 Jun 2024</small>
+                <small> (C) 2024 - Nico Vermaas - version 28 Dec 2024</small>
             </footer>
         </Router>
 

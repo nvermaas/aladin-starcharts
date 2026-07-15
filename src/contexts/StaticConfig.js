@@ -50,7 +50,7 @@ export const config = {
             "url" : "http://middle-earth:8011",
         },
         {
-            "name": "middle-earth:8011 (asyncpg)",
+            "name": "middle-earth:8012 (asyncpg)",
             "url" : "http://middle-earth:8012",
         },
         {

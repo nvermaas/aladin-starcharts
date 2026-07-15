@@ -38,20 +38,20 @@ export const config = {
 
     "backends" : [
         {
-            "name": "uilennest (psycopg2)",
-            "url" : "https://uilennest.net/psycopg2",
+            "name": "middle-earth.uilennest (psycopg2)",
+            "url" : "https://middle-earth.uilennest.net/psycopg2",
         },
         {
-            "name": "uilennest (asyncpg)",
-            "url" : "https://uilennest.net/asyncpg",
+            "name": "middle-earth.uilennest (asyncpg)",
+            "url" : "https://middle-earth.uilennest.net/asyncpg",
         },
         {
-            "name": "192.168.178.37:8011 (psycopg2)",
-            "url" : "http://192.168.178.37:8011",
+            "name": "middle-earth:8011 (psycopg2)",
+            "url" : "http://middle-earth:8011",
         },
         {
-            "name": "192.168.178.37:8011 (asyncpg)",
-            "url" : "http://192.168.178.37:8012",
+            "name": "middle-earth:8011 (asyncpg)",
+            "url" : "http://middle-earth:8012",
         },
         {
             "name": "localhost:8000",

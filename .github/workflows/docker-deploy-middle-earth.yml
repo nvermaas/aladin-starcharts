@@ -1,17 +1,18 @@
-name: build-deploy-docker
+name: docker-deploy-middle-earth
 on:
   push:
     branches:
       - main
 
 jobs:
-  build-deploy-astroview:
+  docker-deploy-middle-earth:
     runs-on: ubuntu-latest
     steps:
       - name: execute build & deploy procedure on local server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.MY_HOST }}
+          port: 2222
           username: ${{ secrets.MY_USER }}
           password: ${{ secrets.MY_PASSWORD }}
           #key: ${{ secrets.MY_PRIVATE_KEY }}

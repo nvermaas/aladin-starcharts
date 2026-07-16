@@ -41,6 +41,7 @@ const default_backend =
     process.env.NODE_ENV === "development"
         ? {
             "name": "localhost:8000",
+            //"url" : "http://localhost:8000",
             "url" : "http://localhost:8000",
         }
         : {

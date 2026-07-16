@@ -1,9 +1,9 @@
-name: docker-deploy-middle-earth
+name: docker-deploy-woodland
 on:
   workflow_dispatch:
 
 jobs:
-  docker-deploy-middle-earth:
+  docker-deploy-woodland:
     runs-on: ubuntu-latest
     steps:
       - name: execute build & deploy procedure on local server

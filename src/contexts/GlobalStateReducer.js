@@ -45,8 +45,8 @@ const default_backend =
             "url" : "http://localhost:8000",
         }
         : {
-            "name": "http://woodland/psycopg2",
-            "url" : "http://woodland/psycopg2",
+            "name": "http://woodland",
+            "url" : "http://woodland",
         };
 
 export const initialState = {

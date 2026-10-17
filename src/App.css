@@ -57,8 +57,8 @@
 }
 
 .custom-btn {
-  background-color: lightgray;
-  color: darkblue;
+  #background-color: lightgray;
+  #color: darkblue;
   #border: #fff !important;
   width: 150px;
   font-family: "Raleway";

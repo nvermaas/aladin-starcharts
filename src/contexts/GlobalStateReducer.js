@@ -45,8 +45,8 @@ const default_backend =
             "url" : "http://localhost:8000",
         }
         : {
-            "name": "uilennest.net",
-            "url" : "https://uilennest.net",
+            "name": "http://woodland/psycopg2",
+            "url" : "http://woodland/psycopg2",
         };
 
 export const initialState = {

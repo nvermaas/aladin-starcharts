@@ -38,8 +38,12 @@ export const config = {
 
     "backends" : [
         {
-            "name": "http://woodland (psycopg2)",
-            "url" : "http://woodland/psycopg2",
+            "name": "http://woodland",
+            "url" : "http://woodland",
+        },
+        {
+            "name": "https://woodland.uilennest",
+            "url" : "https://woodland.uilennest.net",
         },
         {
             "name": "https://middle-earth.uilennest (psycopg2)",
